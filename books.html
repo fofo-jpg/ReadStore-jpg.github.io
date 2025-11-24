@@ -1,0 +1,216 @@
+<!-- books.html: صفحة الشبكة الرئيسية للكتب -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Shopping With Fofo - Books</title>
+<link rel="stylesheet" href="style.css" />
+<style>/* style.css: Baby Pink full theme */
+:root {
+  --baby: #ffb6c1;
+  --accent: #a64ca6;
+  --muted: #f2e6f2;
+  --bg: #fff0f5;
+  --card-bg: #ffe6f2;
+  --maxw: 1200px;
+  --radius: 12px;
+  --shadow: 0 6px 15px rgba(0,0,0,0.15);
+  --transition: 0.3s ease;
+}
+
+* { box-sizing: border-box; margin:0; padding:0; font-family: 'Segoe UI', sans-serif; }
+body { background: var(--bg) url('https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat; }
+header { background: rgba(255, 182, 193,0.95); padding:12px 16px; position: sticky; top:0; z-index:1000; border-bottom:2px solid var(--accent); border-radius:0 0 var(--radius) var(--radius); box-shadow:var(--shadow); }
+.nav { display:flex;justify-content:space-between;align-items:center; max-width:var(--maxw); margin:0 auto; }
+.brand { display:flex;align-items:center; gap:12px; }
+.logo { width:50px; height:50px; background: var(--accent); color:white; font-weight:bold; display:flex;align-items:center;justify-content:center;border-radius:50%; font-size:20px; }
+.title { font-size:22px; font-weight:bold; color: #4d004d; }
+nav a { margin-left:16px; text-decoration:none; font-weight:600; color:#4d004d; transition: var(--transition); }
+nav a:hover { color:white; text-shadow:0 2px 5px rgba(0,0,0,0.4); }
+.hero { height:70vh; display:flex;align-items:center;justify-content:center; text-align:center; color:white; background: rgba(255,182,193,0.5); border-radius: var(--radius); margin:24px 16px; box-shadow: var(--shadow); }
+.hero h1 { font-size:38px; text-shadow:2px 2px 10px rgba(0,0,0,0.3); margin-bottom:12px; }
+.hero p { font-size:18px; }
+.cta { padding:10px 22px; border:none; border-radius: var(--radius); background: var(--accent); color:white; font-weight:600; cursor:pointer; transition: var(--transition); }
+.cta:hover { transform: translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,0.25); }
+main { padding-bottom:28px; }
+section { margin-bottom:32px; }
+.card { background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); overflow:hidden; transition: var(--transition); }
+.card:hover { transform: translateY(-5px); box-shadow:0 12px 25px rgba(0,0,0,0.25); }
+.card img { width:100%; display:block; }
+.card .meta { padding:10px; }
+.card .title-book { font-weight:bold; color:var(--accent); font-size:16px; }
+.card .author { font-size:14px; color:#4d004d; margin:4px 0; }
+.card .price { font-weight:600; color:#4d004d; margin-top:6px; }
+.grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); gap:16px; }
+.controls { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-bottom:18px; }
+input.search, select.select { padding:8px; border-radius:var(--radius); border:1px solid #ccc; min-width:150px; }
+button.btn { padding:6px 12px; border:none; border-radius:var(--radius); background: var(--baby); color:var(--accent); cursor:pointer; transition: var(--transition); }
+button.btn:hover { background: var(--accent); color:white; }
+footer { text-align:center; padding:14px 16px; background: rgba(255,182,193,0.8); color: #4d004d; border-top:2px solid var(--accent); border-radius: var(--radius) var(--radius) 0 0; box-shadow:var(--shadow); margin-top:28px; }
+textarea { resize:none; }
+input:focus, select:focus, textarea:focus { outline:none; border-color:var(--accent); box-shadow:0 0 8px rgba(166,76,166,0.4); }
+.cta {
+  padding: 10px 22px;                  
+  border: none;                        /*  */
+  border-radius: var(--radius);        /*  */
+  background: var(--accent);           /*  */
+  color: white;                        /*  */
+  font-weight: 600;                    /*  */
+  cursor: pointer;                      
+  transition: var(--transition);       
+}
+
+.cta:hover {
+  transform: translateY(-3px);         /*  */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25); /*  */
+}</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="logo">FW</div>
+      <div>
+        <div class="title">Shopping With Fofo</div>
+        <div style="font-size:12px;color:var(--muted)">Baby‑Pink Boutique • Books & More</div>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="books.html">Books</a>
+      <a href="cart.html">Cart</a>
+      <a href="payment.html">Payment</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section id="books" style="max-width:var(--maxw);margin:28px auto;padding:0 16px">
+    <h2 style="color:var(--accent);text-align:center;margin-bottom:16px">All Books</h2>
+    <div class="controls">
+      <input id="q" class="search" placeholder="Search title or author..." />
+      <select id="category" class="select">
+        <option value="all">All categories</option>
+        <option>Fiction</option>
+        <option>Non‑fiction</option>
+        <option>Self‑help</option>
+        <option>Business</option>
+        <option>Kids</option>
+        <option>History</option>
+        <option>Science</option>
+      </select>
+      <select id="sort" class="select">
+        <option value="popular">Sort: Popular</option>
+        <option value="price-asc">Price ↑</option>
+        <option value="price-desc">Price ↓</option>
+      </select>
+      <button class="btn" id="viewCartBtn">View Cart (0)</button>
+    </div>
+
+    <div id="grid" class="grid"></div>
+    <div id="pagination" style="margin-top:18px;display:flex;gap:8px;justify-content:center"></div>
+  </section>
+</main>
+<footer>
+© Shopping With Fofo — Demo store. All rights reserved.
+</footer>
+<script>
+// نفس سكربت الكتب من الصفحة الرئيسية
+const rawBooks=[
+['Harry Potter and the Sorcerer\'s Stone','J.K. Rowling'],
+['The Alchemist','Paulo Coelho'],
+['Atomic Habits','James Clear'],
+['The Subtle Art of Not Giving a F*','Mark Manson'],
+['The Hobbit','J.R.R. Tolkien'],
+['1984','George Orwell'],
+['Pride and Prejudice','Jane Austen'],
+['The Catcher in the Rye','J.D. Salinger'],
+['The Little Prince','Antoine de Saint-Exupéry']
+];
+const books=[];
+const target=120;
+for(let i=0;i<target;i++){
+  const idx=i%rawBooks.length;
+  const [title,author]=rawBooks[idx];
+  const price=(5+((i*7)%25)+Math.round(Math.random()*5)).toFixed(2);
+  const cover=`https://picsum.photos/seed/book${i}/300/420`;
+  const cat='Fiction';
+  books.push({id:i+1,title,author,price,cover,category:cat});
+}
+const grid=document.getElementById('grid');
+const q=document.getElementById('q');
+const category=document.getElementById('category');
+const sort=document.getElementById('sort');
+const viewCartBtn=document.getElementById('viewCartBtn');
+const pagination=document.getElementById('pagination');
+let page=1,perPage=24;
+let cart=[];
+function render(){
+  const query=q.value.trim().toLowerCase();
+  const cat=category.value;
+  let list=books.filter(b=>{
+    const matchesQ=!query||b.title.toLowerCase().includes(query)||b.author.toLowerCase().includes(query);
+    const matchesCat=cat==='all'||b.category===cat;
+    return matchesQ&&matchesCat;
+  });
+  if(sort.value==='price-asc') list.sort((a,b)=>parseFloat(a.price)-parseFloat(b.price));
+  if(sort.value==='price-desc') list.sort((a,b)=>parseFloat(b.price)-parseFloat(a.price));
+  const total=list.length;
+  const pages=Math.max(1,Math.ceil(total/perPage));
+  if(page>pages) page=pages;
+  const start=(page-1)*perPage; const end=start+perPage;
+  const pageItems=list.slice(start,end);
+  grid.innerHTML='';
+  pageItems.forEach(b=>{
+    const el=document.createElement('div'); el.className='card';
+    el.innerHTML=`
+      <div class="cover"><img src="${b.cover}" alt="${b.title} cover"></div>
+      <div class="meta">
+        <div class="title-book">${b.title}</div>
+        <div class="author">${b.author}</div>
+        <div class="price">$${b.price}</div>
+      </div>
+      <div class="actions">
+        <button class="buy" data-id="${b.id}">Add to cart</button>
+        <button class="details" data-id="${b.id}">Details</button>
+      </div>
+    `;
+    grid.appendChild(el);
+  });
+  pagination.innerHTML='';
+  for(let p=1;p<=pages;p++){
+    const btn=document.createElement('button'); btn.textContent=p; btn.className='btn';
+    if(p===page) btn.style.background='var(--baby)';
+    btn.onclick=()=>{page=p; render();};
+    pagination.appendChild(btn);
+  }
+  viewCartBtn.textContent=`View Cart (${cart.length})`;
+}
+function escapeHtml(str){return str.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');}
+grid.addEventListener('click',(e)=>{
+  if(e.target.matches('.buy')){
+    const id=Number(e.target.dataset.id);
+    const book=books.find(b=>b.id===id);
+    cart.push(book);
+    alert(`${book.title} added to cart`);
+    render();
+  }
+  if(e.target.matches('.details')){
+    const id=Number(e.target.dataset.id);
+    const b=books.find(x=>x.id===id);
+    alert(`${b.title}\nby ${b.author}\nPrice: $${b.price}`);
+  }
+});
+viewCartBtn.addEventListener('click',()=>{
+  if(cart.length===0){alert('Cart is empty'); return;}
+  const lines=cart.map((c,i)=>`${i+1}. ${c.title} — $${c.price}`);
+  const sum=cart.reduce((s,c)=>s+parseFloat(c.price),0).toFixed(2);
+  if(confirm(lines.join('\n')+`\n\nTotal: $${sum}\n\nProceed to demo payment?`)){
+    location.href='payment.html';
+  }
+});
+render();
+</script>
+</body>
+</html>

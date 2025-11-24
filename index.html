@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shopping With Fofo — Baby Pink Bookstore</title>
+  <style>
+    :root{
+      --baby:#ffc0dd; /* baby pink */
+      --baby-2:#ff9fc9;
+      --accent:#7a0099; /* complementary deep purple */
+      --muted:#6b6b6b;
+      --card:#ffffff;
+      --radius:12px;
+      --maxw:1200px;
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+
+    body{
+      background: linear-gradient(180deg, #fff 0%, #fff6fb 40%, #fff 100%);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Top menu */
+    header{
+      position:sticky;top:0;z-index:99;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);border-bottom:1px solid rgba(122,0,153,0.06)
+    }
+    .nav{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:54px;height:54px;border-radius:12px;background:linear-gradient(135deg,var(--baby),var(--baby-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#6b005c;font-size:18px}
+    .title{font-weight:700;font-size:20px;color:var(--accent)}
+    nav a{margin-left:18px;text-decoration:none;color:#333;font-weight:600}
+    nav a:hover{color:var(--accent)}
+
+    /* Hero */
+    .hero{height:54vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;background-image:url('https://images.pexels.com/photos/623167/pexels-photo-623167.jpeg');background-size:cover;background-position:center}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(255,192,221,0.78), rgba(122,0,153,0.35))}
+    .hero-inner{position:relative;z-index:2;color:white;padding:24px;max-width:880px}
+    .hero h1{font-size:48px;margin:0 0 10px;font-weight:800;letter-spacing:0.4px}
+    .hero p{margin:0;font-size:18px;opacity:0.95}
+    .hero .cta{margin-top:18px;padding:12px 20px;border-radius:10px;background:white;color:var(--accent);font-weight:700;border:none;cursor:pointer}
+
+    /* Main area */
+    main{max-width:var(--maxw);margin:28px auto;padding:0 16px}
+    .controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+    .search{flex:1;min-width:220px;padding:10px 14px;border-radius:10px;border:1px solid rgba(0,0,0,0.08)}
+    .select, .btn{padding:10px 14px;border-radius:10px;border:1px solid rgba(0,0,0,0.08);background:white;cursor:pointer}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px}
+    .card{background:var(--card);border-radius:12px;padding:10px;box-shadow:0 6px 18px rgba(122,0,153,0.06);display:flex;flex-direction:column;gap:8px}
+    .cover{height:240px;border-radius:8px;overflow:hidden;background:#f3e6ef;display:flex;align-items:center;justify-content:center}
+    .cover img{width:100%;height:100%;object-fit:cover;display:block}
+    .meta{flex:1}
+    .title-book{font-weight:700;font-size:14px;margin:6px 0}
+    .author{font-size:13px;color:var(--muted)}
+    .price{font-weight:800;color:var(--accent);margin-top:8px}
+    .actions{display:flex;gap:8px;margin-top:8px}
+    .buy{flex:1;padding:8px;border-radius:8px;border:none;background:var(--accent);color:white;cursor:pointer}
+    .details{padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:transparent;cursor:pointer}
+
+    /* footer */
+    footer{max-width:var(--maxw);margin:36px auto;padding:18px;color:var(--muted);text-align:center}
+
+    /* responsive */
+    @media (max-width:700px){.hero h1{font-size:32px}.cover{height:200px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <div class="logo">FW</div>
+        <div>
+          <div class="title">Shopping With Fofo</div>
+          <div style="font-size:12px;color:var(--muted)">Baby‑Pink Boutique • Books & More</div>
+        </div>
+      </div>
+      <nav>
+        <a href="Home.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="cart.html">Cart</a>
+        <a href="payment.html">Payment</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <h1>Shopping With Fofo</h1>
+      <p>Elegant baby‑pink bookstore — hundreds of real books with clear images, prices and a simple checkout demo.</p>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:16px">
+        <button class="cta" onclick="document.getElementById('books').scrollIntoView({behavior:'smooth'})">Browse Books</button>
+        <button class="cta" style="background:transparent;color:white;border:1px solid rgba(255,255,255,0.6)" onclick="document.getElementById('pay').scrollIntoView({behavior:'smooth'})">Checkout Demo</button>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="controls">
+      <input id="q" class="search" placeholder="Search title or author..." />
+      <select id="category" class="select">
+        <option value="all">All categories</option>
+        <option>Fiction</option>
+        <option>Non‑fiction</option>
+        <option>Self‑help</option>
+        <option>Business</option>
+        <option>Kids</option>
+        <option>History</option>
+        <option>Science</option>
+      </select>
+      <select id="sort" class="select">
+        <option value="popular">Sort: Popular</option>
+        <option value="price-asc">Price ↑</option>
+        <option value="price-desc">Price ↓</option>
+      </select>
+      <button class="btn" id="viewCartBtn">View Cart (0)</button>
+    </div>
+
+    <section id="books">
+      <h2 style="color:var(--accent);text-align:center;margin-bottom:16px">All Books</h2>
+      <div id="grid" class="grid"></div>
+      <div id="pagination" style="margin-top:18px;display:flex;gap:8px;justify-content:center"></div>
+    </section>
+
+    <!-- Payment demo -->
+    <section id="pay" style="margin-top:36px;padding:18px;background:linear-gradient(180deg,#fff, #fff6fb);border-radius:12px">
+      <h3 style="color:var(--accent);text-align:center">Checkout Demo</h3>
+      <p style="text-align:center;color:var(--muted)">This is a demo payment flow — integrate a real gateway (Stripe/PayPal) for production.</p>
+      <div style="max-width:560px;margin:12px auto;display:flex;gap:12px;flex-direction:column">
+        <input id="name" placeholder="Full name" style="padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.08)" />
+        <input id="card" placeholder="Card number (demo)" style="padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.08)" />
+        <button class="cta" style="background:var(--accent);color:white;border:none" id="payBtn">Pay Now (Demo)</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © Shopping With Fofo — Demo store. For production use secure payments and a backend.
+  </footer>
+
+  <script>
+    // ---------- Book data (120 real titles) ----------
+    const rawBooks = [
+      ['Harry Potter and the Sorcerer\'s Stone','J.K. Rowling'],
+      ['Harry Potter and the Chamber of Secrets','J.K. Rowling'],
+      ['Harry Potter and the Prisoner of Azkaban','J.K. Rowling'],
+      ['Harry Potter and the Goblet of Fire','J.K. Rowling'],
+      ['Harry Potter and the Order of the Phoenix','J.K. Rowling'],
+      ['Harry Potter and the Half‑Blood Prince','J.K. Rowling'],
+      ['Harry Potter and the Deathly Hallows','J.K. Rowling'],
+      ['The Hobbit','J.R.R. Tolkien'],
+      ['The Lord of the Rings: The Fellowship of the Ring','J.R.R. Tolkien'],
+      ['The Lord of the Rings: The Two Towers','J.R.R. Tolkien'],
+      ['The Lord of the Rings: The Return of the King','J.R.R. Tolkien'],
+      ['The Catcher in the Rye','J.D. Salinger'],
+      ['To Kill a Mockingbird','Harper Lee'],
+      ['1984','George Orwell'],
+      ['Brave New World','Aldous Huxley'],
+      ['Fahrenheit 451','Ray Bradbury'],
+      ['The Great Gatsby','F. Scott Fitzgerald'],
+      ['Pride and Prejudice','Jane Austen'],
+      ['Wuthering Heights','Emily Brontë'],
+      ['Jane Eyre','Charlotte Brontë'],
+      ['The Alchemist','Paulo Coelho'],
+      ['The Little Prince','Antoine de Saint‑Exupéry'],
+      ['The Fault in Our Stars','John Green'],
+      ['The Kite Runner','Khaled Hosseini'],
+      ['A Thousand Splendid Suns','Khaled Hosseini'],
+      ['The Book Thief','Markus Zusak'],
+      ['The Road','Cormac McCarthy'],
+      ['Life of Pi','Yann Martel'],
+      ['The Chronicles of Narnia','C.S. Lewis'],
+      ['The Hunger Games','Suzanne Collins'],
+      ['Catching Fire','Suzanne Collins'],
+      ['Mockingjay','Suzanne Collins'],
+      ['The Girl on the Train','Paula Hawkins'],
+      ['Gone Girl','Gillian Flynn'],
+      ['The Silent Patient','Alex Michaelides'],
+      ['The Da Vinci Code','Dan Brown'],
+      ['Angels & Demons','Dan Brown'],
+      ['Digital Fortress','Dan Brown'],
+      ['Deception Point','Dan Brown'],
+      ['The Alchemist','Paulo Coelho'],
+      ['The Subtle Art of Not Giving a F*','Mark Manson'],
+      ['Atomic Habits','James Clear'],
+      ['Deep Work','Cal Newport'],
+      ['Thinking, Fast and Slow','Daniel Kahneman'],
+      ['Sapiens: A Brief History of Humankind','Yuval Noah Harari'],
+      ['Homo Deus','Yuval Noah Harari'],
+      ['Educated','Tara Westover'],
+      ['Becoming','Michelle Obama'],
+      ['The Power of Habit','Charles Duhigg'],
+      ['Outliers','Malcolm Gladwell'],
+      ['Blink','Malcolm Gladwell'],
+      ['The 7 Habits of Highly Effective People','Stephen R. Covey'],
+      ['Rich Dad Poor Dad','Robert T. Kiyosaki'],
+      ['Think and Grow Rich','Napoleon Hill'],
+      ['The 48 Laws of Power','Robert Greene'],
+      ['Man\'s Search for Meaning','Viktor E. Frankl'],
+      ['The Miracle Morning','Hal Elrod'],
+      ['Awaken the Giant Within','Tony Robbins'],
+      ['The Four Agreements','Don Miguel Ruiz'],
+      ['The Richest Man in Babylon','George S. Clason'],
+      ['The Intelligent Investor','Benjamin Graham'],
+      ['The Little Book of Common Sense Investing','John C. Bogle'],
+      ['The Psychology of Money','Morgan Housel'],
+      ['The Lean Startup','Eric Ries'],
+      ['Zero to One','Peter Thiel'],
+      ['The Hard Thing About Hard Things','Ben Horowitz'],
+      ['Good to Great','Jim Collins'],
+      ['Start with Why','Simon Sinek'],
+      ['The Innovator\'s Dilemma','Clayton M. Christensen'],
+      ['Dune','Frank Herbert'],
+      ['Ender\'s Game','Orson Scott Card'],
+      ['Neuromancer','William Gibson'],
+      ['Foundation','Isaac Asimov'],
+      ['Snow Crash','Neal Stephenson'],
+      ['The Martian','Andy Weir'],
+      ['Ready Player One','Ernest Cline'],
+      ['The Handmaid\'s Tale','Margaret Atwood'],
+      ['The Road','Cormac McCarthy'],
+      ['A Game of Thrones','George R.R. Martin'],
+      ['A Clash of Kings','George R.R. Martin'],
+      ['A Storm of Swords','George R.R. Martin'],
+      ['The Name of the Wind','Patrick Rothfuss'],
+      ['The Wise Man\'s Fear','Patrick Rothfuss'],
+      ['Mistborn: The Final Empire','Brandon Sanderson'],
+      ['The Way of Kings','Brandon Sanderson'],
+      ['Words of Radiance','Brandon Sanderson'],
+      ['The Lightning Thief','Rick Riordan'],
+      ['Percy Jackson and the Sea of Monsters','Rick Riordan'],
+      ['The Odyssey','Homer'],
+      ['The Iliad','Homer'],
+      ['Meditations','Marcus Aurelius'],
+      ['The Prince','Niccolò Machiavelli'],
+      ['The Art of War','Sun Tzu'],
+      ['The Complete Sherlock Holmes','Arthur Conan Doyle'],
+      ['Moby Dick','Herman Melville'],
+      ['Don Quixote','Miguel de Cervantes'],
+      ['Les Misérables','Victor Hugo'],
+      ['Crime and Punishment','Fyodor Dostoevsky'],
+      ['War and Peace','Leo Tolstoy'],
+      ['The Brothers Karamazov','Fyodor Dostoevsky'],
+      ['The Alchemist (recommended edition)','Paulo Coelho'],
+      ['On the Road','Jack Kerouac'],
+      ['The Sun Also Rises','Ernest Hemingway'],
+      ['For Whom the Bell Tolls','Ernest Hemingway'],
+      ['The Old Man and the Sea','Ernest Hemingway'],
+      ['Lolita','Vladimir Nabokov'],
+      ['The Color Purple','Alice Walker'],
+      ['Beloved','Toni Morrison'],
+      ['Their Eyes Were Watching God','Zora Neale Hurston'],
+      ['The Grapes of Wrath','John Steinbeck'],
+      ['East of Eden','John Steinbeck'],
+      ['Of Mice and Men','John Steinbeck'],
+      ['The Picture of Dorian Gray','Oscar Wilde'],
+      ['Frankenstein','Mary Shelley'],
+      ['Dracula','Bram Stoker']
+    ];
+
+    // build full book objects (120+). We'll repeat titles if array shorter, but ensure length >=120
+    const books = [];
+    const target = 120;
+    for(let i=0;i<target;i++){
+      const idx = i % rawBooks.length;
+      const [title,author] = rawBooks[idx];
+      const price = (5 + ((i*7)%25) + Math.round(Math.random()*5)).toFixed(2);
+      const cover = `https://picsum.photos/seed/book${i}/300/420`;
+      // category guess
+      const cat = (title.toLowerCase().includes('guide')||title.toLowerCase().includes('how')||title.toLowerCase().includes('habits')||title.toLowerCase().includes('psychology'))? 'Non‑fiction' : (title.toLowerCase().includes('harry')||title.toLowerCase().includes('hobbit')||title.toLowerCase().includes('dune')||title.toLowerCase().includes('game'))? 'Fiction' : 'Fiction';
+      books.push({id:i+1,title,author,price,cover,category:cat});
+    }
+
+    // ---------- UI & render ----------
+    const grid = document.getElementById('grid');
+    const q = document.getElementById('q');
+    const category = document.getElementById('category');
+    const sort = document.getElementById('sort');
+    const viewCartBtn = document.getElementById('viewCartBtn');
+    const pagination = document.getElementById('pagination');
+
+    let page = 1, perPage = 24;
+    let cart = [];
+
+    function render(){
+      const query = q.value.trim().toLowerCase();
+      const cat = category.value;
+      let list = books.filter(b=>{
+        const matchesQ = !query || b.title.toLowerCase().includes(query) || b.author.toLowerCase().includes(query);
+        const matchesCat = cat==='all' || b.category===cat;
+        return matchesQ && matchesCat;
+      });
+
+      // sort
+      if(sort.value==='price-asc') list.sort((a,b)=>parseFloat(a.price)-parseFloat(b.price));
+      if(sort.value==='price-desc') list.sort((a,b)=>parseFloat(b.price)-parseFloat(a.price));
+
+      const total = list.length;
+      const pages = Math.max(1, Math.ceil(total/perPage));
+      if(page>pages) page = pages;
+      const start = (page-1)*perPage; const end = start+perPage;
+      const pageItems = list.slice(start,end);
+
+      grid.innerHTML = '';
+      pageItems.forEach(b=>{
+        const el = document.createElement('div'); el.className='card';
+        el.innerHTML = `
+          <div class="cover"><img src="${b.cover}" alt="${escapeHtml(b.title)} cover"></div>
+          <div class="meta">
+            <div class="title-book">${escapeHtml(b.title)}</div>
+            <div class="author">${escapeHtml(b.author)}</div>
+            <div class="price">$${b.price}</div>
+          </div>
+          <div class="actions">
+            <button class="buy" data-id="${b.id}">Add to cart</button>
+            <button class="details" data-id="${b.id}">Details</button>
+          </div>
+        `;
+        grid.appendChild(el);
+      });
+
+      // pagination
+      pagination.innerHTML = '';
+      for(let p=1;p<=pages;p++){
+        const btn = document.createElement('button'); btn.textContent = p; btn.className='btn';
+        if(p===page) btn.style.background = 'var(--baby)';
+        btn.onclick = ()=>{ page=p; render(); };
+        pagination.appendChild(btn);
+      }
+
+      // update cart button
+      viewCartBtn.textContent = `View Cart (${cart.length})`;
+    }
+
+    function escapeHtml(str){ return str.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+
+    // events
+    q.addEventListener('input', ()=>{ page=1; render(); });
+    category.addEventListener('change', ()=>{ page=1; render(); });
+    sort.addEventListener('change', ()=>{ page=1; render(); });
+
+    grid.addEventListener('click',(e)=>{
+      if(e.target.matches('.buy')){
+        const id = Number(e.target.dataset.id);
+        const book = books.find(b=>b.id===id);
+        cart.push(book);
+        alert(`${book.title} added to cart`);
+        render();
+      }
+      if(e.target.matches('.details')){
+        const id = Number(e.target.dataset.id);
+        const b = books.find(x=>x.id===id);
+        alert(`${b.title}\nby ${b.author}\nPrice: $${b.price}`);
+      }
+    });
+
+    viewCartBtn.addEventListener('click', ()=>{
+      if(cart.length===0){ alert('Cart is empty'); return; }
+      const lines = cart.map((c,i)=>`${i+1}. ${c.title} — $${c.price}`);
+      const sum = cart.reduce((s,c)=>s+parseFloat(c.price),0).toFixed(2);
+      if(confirm(lines.join('\n') + `\n\nTotal: $${sum}\n\nProceed to demo payment?`)){
+        document.getElementById('pay').scrollIntoView({behavior:'smooth'});
+      }
+    });
+
+    document.getElementById('payBtn').addEventListener('click', ()=>{
+      const name = document.getElementById('name').value.trim();
+      if(!name){ alert('Please enter your name for demo'); return; }
+      alert('Payment simulated — Thank you, ' + name + '!');
+    });
+
+    // initial render
+    render();
+  </script>
+</body>
+</html>
